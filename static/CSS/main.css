@@ -4,6 +4,7 @@
     color: white;
 }
 
+
 .puzzleElement{
     width:120px;
     height:120px;
@@ -14,13 +15,26 @@
     cursor: pointer;
 }
 
+.puzzleElement:hover{
+        transform: scale(1.05);
+        filter:grayscale(0%);
+
+}
+
 #mainTable{
+    background-image: url("/static/pictures/hedgehog.jpg");
     display: flex;
     flex-wrap: wrap;
     height: 366px;
     width: 366px;
     border: 1px solid red;
 }
+
+#testBox{
+    background: red;
+    width: 200px;
+    height: 200px;
+    }
 
 .puzzle11 {background-position: left top;}
 .puzzle12 {background-position: center top;}

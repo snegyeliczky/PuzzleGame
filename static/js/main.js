@@ -1,6 +1,5 @@
 console.log("hello gamer");
 
-
 let startButton = document.getElementById("startButton");
 startButton.addEventListener("click", createPuzzle);
 
@@ -29,15 +28,42 @@ function createPuzzle() {
     for (let i = 1; i <= 3; i++){
         for (let j = 1; j <= 3; j++) {
             let puzzlePiece = document.createElement("div");
-            puzzlePiece.setAttribute("class", "puzzleElement" + " " + "puzzle" + i + j);
+            puzzlePiece.setAttribute("class", "puzzleElement puzzle" + i + j);
             puzzlePiece.setAttribute("id", "puzzle" + i + j);
             puzzlePiece.textContent = x;
             x++;
             gameTable.appendChild(puzzlePiece);
         }
     }
+    startAnimation();
+    getOrder();
+    startButton.disabled = true;
     shuffle();
+    getOrder();
 }
 
 
 dragula([document.getElementById('mainTable')]);
+
+function startAnimation() {
+    anime({
+        targets:"#mainTable",
+        rotate: '2turn',
+        duration:3500
+
+});
+
+}
+
+
+function getOrder(){
+
+    let elements = document.getElementsByClassName("puzzleElement");
+    let idList = []
+    for (let element of elements) {
+        let elementid =element.getAttribute("id")
+        idList.push(elementid)
+    }
+    console.log(idList)
+    return idList
+}
