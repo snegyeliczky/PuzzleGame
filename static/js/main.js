@@ -1,13 +1,12 @@
 console.log("hello gamer");
 
-let startButton = document.getElementById("startButton");
-startButton.addEventListener("click", createPuzzle);
-
-
 function swapTiles(cell1,cell2) {
-  let temp = document.getElementById(cell1).className;
+  let tempClass = document.getElementById(cell1).className;
+  let tempData = document.getElementById(cell1).dataset.order;
   document.getElementById(cell1).className = document.getElementById(cell2).className;
-  document.getElementById(cell2).className = temp;
+  document.getElementById(cell1).dataset.order = document.getElementById(cell2).dataset.order;
+  document.getElementById(cell2).className = tempClass;
+  document.getElementById(cell2).dataset.order = tempData;
 }
 
 
@@ -30,20 +29,16 @@ function createPuzzle() {
             let puzzlePiece = document.createElement("div");
             puzzlePiece.setAttribute("class", "puzzleElement puzzle" + i + j);
             puzzlePiece.setAttribute("id", "puzzle" + i + j);
+            puzzlePiece.dataset.order=""+i + j
             puzzlePiece.textContent = x;
+
             x++;
             gameTable.appendChild(puzzlePiece);
         }
     }
-    startAnimation();
-    getOrder();
     startButton.disabled = true;
-    shuffle();
-    getOrder();
 }
 
-
-dragula([document.getElementById('mainTable')]);
 
 function startAnimation() {
     anime({
@@ -57,13 +52,36 @@ function startAnimation() {
 
 
 function getOrder(){
-
     let elements = document.getElementsByClassName("puzzleElement");
     let idList = []
     for (let element of elements) {
-        let elementid =element.getAttribute("id")
-        idList.push(elementid)
+        let elementId =element.getAttribute("data-order")
+        idList.push(elementId)
     }
-    console.log(idList)
     return idList
 }
+
+let startButton = document.getElementById("startButton");
+startButton.addEventListener("click", main);
+
+function main(){
+    createPuzzle()
+    let pick = 0;
+    const rightOrder = getOrder();
+    console.log(rightOrder)
+    shuffle();
+    startAnimation()
+    dragula([document.getElementById('mainTable')])
+        .on("drop", function () {
+            pick++
+            console.log(pick)
+        })
+        .on("dragend", function (){
+            let numbers = getOrder();
+            console.log(numbers);
+            console.log(rightOrder)
+            if (numbers.toString() == rightOrder.toString()){
+                alert("YOU WIN FROM "+pick+ " pick !!!");
+        }});
+
+};
