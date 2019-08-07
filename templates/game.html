@@ -2,10 +2,15 @@
 
 {% block head %}
 
-<script src="{{ url_for('static', filename='js/main.js')}}" defer></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.css" />
+<script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js' defer></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/main.js')}}" defer></script>
 
 {% endblock %}
 
 {% block content %}
 <h1>Hello puzzle</h1>
+<button id="startButton">Start the game</button>
+<div id="mainTable">
+</div>
 {% endblock %}
