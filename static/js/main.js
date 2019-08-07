@@ -1,7 +1,7 @@
-console.log("hello gamer")
+console.log("hello gamer");
 
-let startButton = document.getElementById("startButton")
-startButton.addEventListener("click", createPuzzle)
+let startButton = document.getElementById("startButton");
+startButton.addEventListener("click", createPuzzle);
 
 
 function createPuzzle() {
@@ -9,6 +9,7 @@ function createPuzzle() {
     for (let i = 1; i <=9; i++){
         let puzzlePiece = document.createElement("div");
         puzzlePiece.setAttribute("class","puzzleElement");
+        puzzlePiece.setAttribute("id","puzzle" + i);
         puzzlePiece.textContent= i;
         gameTable.appendChild(puzzlePiece)
 

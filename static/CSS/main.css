@@ -5,18 +5,29 @@
 }
 
 .puzzleElement{
-    width:100px;
-    height:100px;
-    background: lightgoldenrodyellow;
+    width:120px;
+    height:120px;
+    background-image: url("/static/pictures/hedgehog.jpg");
     color: black;
     text-align: center;
     border:1px solid black;
+    cursor: pointer;
 }
 
 #mainTable{
     display: flex;
     flex-wrap: wrap;
-    height: 306px;
-    width: 306px;
+    height: 366px;
+    width: 366px;
     border: 1px solid red;
 }
+
+#puzzle1 {background-position: left top;}
+#puzzle2 {background-position: center top;}
+#puzzle3 {background-position: right top;}
+#puzzle4 {background-position: left center;}
+#puzzle5 {background-position: center center;}
+#puzzle6 {background-position: right center;}
+#puzzle7 {background-position: left bottom;}
+#puzzle8 {background-position: center bottom;}
+#puzzle9 {background-position: right bottom;}
