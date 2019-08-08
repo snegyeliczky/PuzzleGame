@@ -1,6 +1,6 @@
 console.log("hello gamer");
 
-let urlPath;
+let urlPath = "/static/pictures/hedgehog.jpg";
 
 
 let loadFile = function(event) {
@@ -65,7 +65,7 @@ function getOrder(){
     let elements = document.getElementsByClassName("puzzleElement");
     let idList = [];
     for (let element of elements) {
-        let elementId =element.getAttribute("data-order")
+        let elementId =element.getAttribute("data-order");
         idList.push(elementId)
     }
     return idList
