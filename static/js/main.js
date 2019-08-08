@@ -1,5 +1,6 @@
 console.log("hello gamer");
 
+
 function swapTiles(cell1,cell2) {
   let tempClass = document.getElementById(cell1).className;
   let tempData = document.getElementById(cell1).dataset.order;
@@ -46,8 +47,7 @@ function startAnimation() {
         rotate: '2turn',
         duration:3500
 
-});
-
+    });
 }
 
 
@@ -61,8 +61,10 @@ function getOrder(){
     return idList
 }
 
+
 let startButton = document.getElementById("startButton");
 startButton.addEventListener("click", main);
+
 
 function main(){
     createPuzzle()
