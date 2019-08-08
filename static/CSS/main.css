@@ -1,9 +1,41 @@
 *{
     margin: 0 auto;
-    background: rebeccapurple;
+    //background: rebeccapurple;
     color: white;
 }
 
+html {
+    background-image: url("/static/backgrounds/wallpaper8.jpeg");
+}
+
+h1 {
+    color: white;
+    font-family: 'Raleway', Helvetica, Arial, sans-serif;
+    font-size: 70px;
+    font-weight: lighter;
+    line-height: 70px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    text-align: center;
+}
+
+button {
+    color: black;
+    font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
+    font-size: 40px;
+    line-height: 25px;
+    text-align: center;
+    padding: 20px 50px;
+    background: linear-gradient(90deg, lightgreen, darkslateblue);
+    border: 2px solid black;
+    box-shadow: gray;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .puzzleElement{
     width:120px;
@@ -21,13 +53,17 @@
 
 }
 
+.table {
+    margin-top: 100px;
+}
+
 #mainTable{
     background-image: url("/static/pictures/hedgehog.jpg");
     display: flex;
     flex-wrap: wrap;
     height: 366px;
     width: 366px;
-    border: 1px solid red;
+    border: 10px solid lightgreen;
 }
 
 #testBox{
