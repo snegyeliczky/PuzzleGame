@@ -82,6 +82,14 @@ function main(){
             console.log(rightOrder)
             if (numbers.toString() == rightOrder.toString()){
                 alert("YOU WIN FROM "+pick+ " pick !!!");
+                anime({
+                      targets: '#gameTable',
+                      scale: [
+                        {value: .1, easing: 'easeOutSine', duration: 500},
+                        {value: 1, easing: 'easeInOutQuad', duration: 1200}
+                      ],
+                      delay: anime.stagger(200, {grid: [3, 3], from: 'center'})
+                    });
         }});
 
 };
