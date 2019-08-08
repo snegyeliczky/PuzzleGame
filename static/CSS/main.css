@@ -5,7 +5,7 @@
 }
 
 .puzzleElement{
-    /*background-image: url("/static/pictures/hedgehog.jpg");*/
+    background-image: url("/static/pictures/hedgehog.jpg");
     width:120px;
     height:120px;
     color: black;
