@@ -13,18 +13,14 @@
 {% endblock %}
 
 {% block content %}
+
     <h1>Hello puzzle</h1>
+    <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+    <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
     <div class="button">
         <button id="startButton">Start the game</button>
     </div>
     <div id="mainTable" class="table">
     </div>
-    <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
-    <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
-
-    <button id="startButton">Start the game</button>
-    <div id="mainTable"></div>
-
-
 
 {% endblock %}
