@@ -75,8 +75,10 @@ let startButton = document.getElementById("startButton");
 startButton.addEventListener("click", main);
 
 function main(){
-    createPuzzle();
     let pick = 0;
+    let counter = document.getElementById("tick-counter");
+    counter.textContent="kolbáász: " + pick;
+    createPuzzle();
     const rightOrder = getOrder();
     console.log(rightOrder);
     shuffle();
@@ -85,12 +87,13 @@ function main(){
         .on("drop", function () {
             pick++;
             console.log(pick)
+            counter.textContent="kolbáász: " + pick;
         })
         .on("dragend", function (){
             let numbers = getOrder();
             console.log(numbers);
             console.log(rightOrder)
-            if (numbers.toString() == rightOrder.toString()){
+            if (numbers.toString() == rightOrder.toString() ){
                 let mainTable = document.getElementById('mainTable')
                 mainTable.style.background = "black"
                 anime({
@@ -101,7 +104,6 @@ function main(){
                       ],
                       delay: anime.stagger(1500, {grid: [3, 3], from: 'center'})
                     });
-                alert("YOU WIN FROM "+pick+ " pick !!!");
         }});
 
 }
