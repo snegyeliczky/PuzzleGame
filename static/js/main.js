@@ -75,8 +75,9 @@ let startButton = document.getElementById("startButton");
 startButton.addEventListener("click", main);
 
 function main(){
-    createPuzzle();
     let pick = 0;
+    let counter = document.getElementById("tick-counter");
+    createPuzzle();
     const rightOrder = getOrder();
     console.log(rightOrder);
     shuffle();
@@ -88,6 +89,7 @@ function main(){
         })
         .on("dragend", function (){
             let numbers = getOrder();
+            counter.textContent=pick;
             console.log(numbers);
             console.log(rightOrder)
             if (numbers.toString() == rightOrder.toString()){
