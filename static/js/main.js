@@ -1,5 +1,14 @@
 console.log("hello gamer");
 
+let urlPath;
+
+
+let loadFile = function(event) {
+	document.getElementById('mainTable').style.backgroundImage = "url('"+ URL.createObjectURL(event.target.files[0]) +"')";
+	urlPath = URL.createObjectURL(event.target.files[0]);
+
+};
+
 
 function swapTiles(cell1,cell2) {
   let tempClass = document.getElementById(cell1).className;
@@ -30,10 +39,11 @@ function createPuzzle() {
             let puzzlePiece = document.createElement("div");
             puzzlePiece.setAttribute("class", "puzzleElement puzzle" + i + j);
             puzzlePiece.setAttribute("id", "puzzle" + i + j);
-            puzzlePiece.dataset.order=""+i + j
+            puzzlePiece.dataset.order=""+i + j;
             puzzlePiece.textContent = x;
 
             x++;
+            puzzlePiece.style.backgroundImage = "url('"+ urlPath +"')";
             gameTable.appendChild(puzzlePiece);
         }
     }
@@ -53,7 +63,7 @@ function startAnimation() {
 
 function getOrder(){
     let elements = document.getElementsByClassName("puzzleElement");
-    let idList = []
+    let idList = [];
     for (let element of elements) {
         let elementId =element.getAttribute("data-order")
         idList.push(elementId)
@@ -61,21 +71,19 @@ function getOrder(){
     return idList
 }
 
-
 let startButton = document.getElementById("startButton");
 startButton.addEventListener("click", main);
 
-
 function main(){
-    createPuzzle()
+    createPuzzle();
     let pick = 0;
     const rightOrder = getOrder();
-    console.log(rightOrder)
+    console.log(rightOrder);
     shuffle();
-    startAnimation()
+    startAnimation();
     dragula([document.getElementById('mainTable')])
         .on("drop", function () {
-            pick++
+            pick++;
             console.log(pick)
         })
         .on("dragend", function (){
@@ -96,4 +104,5 @@ function main(){
                 alert("YOU WIN FROM "+pick+ " pick !!!");
         }});
 
-};
+}
+
