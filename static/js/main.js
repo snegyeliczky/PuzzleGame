@@ -1,5 +1,14 @@
 console.log("hello gamer");
 
+let urlPath = "/static/pictures/hedgehog.jpg";
+
+
+let loadFile = function(event) {
+	document.getElementById('mainTable').style.backgroundImage = "url('"+ URL.createObjectURL(event.target.files[0]) +"')";
+	urlPath = URL.createObjectURL(event.target.files[0]);
+
+};
+
 
 function swapTiles(cell1,cell2) {
   let tempClass = document.getElementById(cell1).className;
@@ -30,10 +39,11 @@ function createPuzzle() {
             let puzzlePiece = document.createElement("div");
             puzzlePiece.setAttribute("class", "puzzleElement puzzle" + i + j);
             puzzlePiece.setAttribute("id", "puzzle" + i + j);
-            puzzlePiece.dataset.order=""+i + j
+            puzzlePiece.dataset.order=""+i + j;
             puzzlePiece.textContent = x;
 
             x++;
+            puzzlePiece.style.backgroundImage = "url('"+ urlPath +"')";
             gameTable.appendChild(puzzlePiece);
         }
     }
@@ -53,29 +63,27 @@ function startAnimation() {
 
 function getOrder(){
     let elements = document.getElementsByClassName("puzzleElement");
-    let idList = []
+    let idList = [];
     for (let element of elements) {
-        let elementId =element.getAttribute("data-order")
+        let elementId =element.getAttribute("data-order");
         idList.push(elementId)
     }
     return idList
 }
 
-
 let startButton = document.getElementById("startButton");
 startButton.addEventListener("click", main);
 
-
 function main(){
-    createPuzzle()
+    createPuzzle();
     let pick = 0;
     const rightOrder = getOrder();
-    console.log(rightOrder)
+    console.log(rightOrder);
     shuffle();
-    startAnimation()
+    startAnimation();
     dragula([document.getElementById('mainTable')])
         .on("drop", function () {
-            pick++
+            pick++;
             console.log(pick)
         })
         .on("dragend", function (){
@@ -83,15 +91,18 @@ function main(){
             console.log(numbers);
             console.log(rightOrder)
             if (numbers.toString() == rightOrder.toString()){
-                alert("YOU WIN FROM "+pick+ " pick !!!");
+                let mainTable = document.getElementById('mainTable')
+                mainTable.style.background = "black"
                 anime({
-                      targets: '#gameTable',
+                      targets: '.puzzleElement',
                       scale: [
-                        {value: .1, easing: 'easeOutSine', duration: 500},
-                        {value: 1, easing: 'easeInOutQuad', duration: 1200}
+                        {value: .1, easing: 'easeOutSine', duration: 1000},
+                        {value: 1, easing: 'easeInOutQuad', duration: 1700}
                       ],
-                      delay: anime.stagger(200, {grid: [3, 3], from: 'center'})
+                      delay: anime.stagger(1500, {grid: [3, 3], from: 'center'})
                     });
+                alert("YOU WIN FROM "+pick+ " pick !!!");
         }});
 
-};
+}
+

@@ -1,6 +1,5 @@
 *{
     margin: 0 auto;
-    //background: rebeccapurple;
     color: white;
 }
 
@@ -38,9 +37,9 @@ button {
 }
 
 .puzzleElement{
+    background-image: url("/static/pictures/hedgehog.jpg");
     width:120px;
     height:120px;
-    background-image: url("/static/pictures/hedgehog.jpg");
     color: black;
     text-align: center;
     border:1px solid black;
@@ -65,12 +64,6 @@ button {
     width: 366px;
     border: 10px solid lightgreen;
 }
-
-#testBox{
-    background: red;
-    width: 200px;
-    height: 200px;
-    }
 
 .puzzle11 {background-position: left top;}
 .puzzle12 {background-position: center top;}
