@@ -14,12 +14,14 @@
 
 {% block content %}
 
-    <h1>Hello puzzle</h1>
+    <h1>Sexy puzzle</h1>
     <input class="button2" type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
     <label class="button2" for="file" style="cursor: pointer;">Upload Image</label>
     <div class="button">
         <button id="startButton">Start the game</button>
-        <button> <a href="/" style="text-decoration: none" >Restart</a></button>
+    </div>
+    <div class="button">
+        <button id="restartButton"> <a href="/">Restart</a></button>
     </div>
     <div id="mainTable" class="table">
     </div>
