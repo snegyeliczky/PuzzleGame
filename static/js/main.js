@@ -4,6 +4,9 @@ let urlPath = "/static/pictures/hedgehog.jpg";
 
 
 let loadFile = function(event) {
+    console.log(event)
+    console.log(event.target)
+    console.log("url('" + URL.createObjectURL(event.target.files[0])+"')")
 	document.getElementById('mainTable').style.backgroundImage = "url('"+ URL.createObjectURL(event.target.files[0]) +"')";
 	urlPath = URL.createObjectURL(event.target.files[0]);
 
@@ -60,6 +63,27 @@ function startAnimation() {
     });
 }
 
+function endTurn() {
+    anime({
+        targets:"#mainTable",
+        scale: 2,
+        loop:true
+        });
+
+}
+
+function endAnimation() {
+    anime({
+        targets: '.puzzleElement',
+        scale: [
+            {value: .1, easing: 'easeOutSine', duration: 1000},
+            {value: 1, easing: 'easeInOutQuad', duration: 1700}
+            ],
+        delay: anime.stagger(1500, {grid: [3, 3], from: 'center'}),
+    });
+
+}
+
 
 function getOrder(){
     let elements = document.getElementsByClassName("puzzleElement");
@@ -95,15 +119,8 @@ function main(){
             console.log(rightOrder)
             if (numbers.toString() == rightOrder.toString() ){
                 let mainTable = document.getElementById('mainTable')
-                mainTable.style.background = "black"
-                anime({
-                      targets: '.puzzleElement',
-                      scale: [
-                        {value: .1, easing: 'easeOutSine', duration: 1000},
-                        {value: 1, easing: 'easeInOutQuad', duration: 1700}
-                      ],
-                      delay: anime.stagger(1500, {grid: [3, 3], from: 'center'})
-                    });
+                mainTable.style.background = "black";
+                endAnimation();
         }});
 
 }
