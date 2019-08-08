@@ -81,15 +81,17 @@ function main(){
             console.log(numbers);
             console.log(rightOrder)
             if (numbers.toString() == rightOrder.toString()){
-                alert("YOU WIN FROM "+pick+ " pick !!!");
+                let mainTable = document.getElementById('mainTable')
+                mainTable.style.background = "black"
                 anime({
-                      targets: '#gameTable',
+                      targets: '.puzzleElement',
                       scale: [
-                        {value: .1, easing: 'easeOutSine', duration: 500},
-                        {value: 1, easing: 'easeInOutQuad', duration: 1200}
+                        {value: .1, easing: 'easeOutSine', duration: 1000},
+                        {value: 1, easing: 'easeInOutQuad', duration: 1700}
                       ],
-                      delay: anime.stagger(200, {grid: [3, 3], from: 'center'})
+                      delay: anime.stagger(1500, {grid: [3, 3], from: 'center'})
                     });
+                alert("YOU WIN FROM "+pick+ " pick !!!");
         }});
 
 };
