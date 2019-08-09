@@ -1,5 +1,6 @@
 (function() {
     let urlPath = "/static/pictures/hedgehog.jpg";
+    let correctOrder;
 
 
     let loadFile = function (event) {
@@ -9,13 +10,16 @@
     };
 
 
-    function swapTiles(cell1, cell2) {
-        let tempClass = document.getElementById(cell1).className;
-        let tempData = document.getElementById(cell1).dataset.order;
-        document.getElementById(cell1).className = document.getElementById(cell2).className;
-        document.getElementById(cell1).dataset.order = document.getElementById(cell2).dataset.order;
-        document.getElementById(cell2).className = tempClass;
-        document.getElementById(cell2).dataset.order = tempData;
+    function swapTiles(cellId1, cellId2) {
+        const cell2 = document.getElementById(cellId2);
+        const cell1 = document.getElementById(cellId1);
+        const tempClass = cell1.className;
+        const tempData = cell1.dataset.order;
+
+        cell1.className = cell2.className;
+        cell1.dataset.order = cell2.dataset.order;
+        cell2.className = tempClass;
+        cell2.dataset.order = tempData;
     }
 
 
@@ -31,7 +35,7 @@
 
 
     function createPuzzle() {
-        let gameTable = document.getElementById("mainTable");
+        const gameTable = document.getElementById("mainTable");
         let x = 1;
         for (let i = 1; i <= 3; i++) {
             for (let j = 1; j <= 3; j++) {
@@ -47,6 +51,7 @@
             }
         }
         startButton.disabled = true;
+        correctOrder = getOrder();
     }
 
 
@@ -69,6 +74,7 @@
     }
 
     function endAnimation() {
+        document.getElementById('mainTable').style.background = "black";
         anime({
             targets: '.puzzleElement',
             scale: [
@@ -99,7 +105,6 @@
         let counter = document.getElementById("tick-counter");
         counter.textContent = "Counter: " + pick;
         createPuzzle();
-        const rightOrder = getOrder();
         shuffle();
         startAnimation();
         dragula([document.getElementById('mainTable')])
@@ -108,14 +113,13 @@
                 console.log(pick);
                 counter.textContent = "Counter: " + pick;
             })
-            .on("dragend", function () {
-                let numbers = getOrder();
-                if (numbers.toString() === rightOrder.toString()) {
-                    let mainTable = document.getElementById('mainTable');
-                    mainTable.style.background = "black";
-                    endAnimation();
-                }
-            });
+            .on("dragend", winCheck);
+    }
+
+    function winCheck() {
+        if (getOrder().toString() === correctOrder.toString()) {
+            endAnimation();
+        }
     }
 }());
 
