@@ -44,7 +44,6 @@ function createPuzzle() {
             puzzlePiece.setAttribute("id", "puzzle" + i + j);
             puzzlePiece.dataset.order=""+i + j;
             puzzlePiece.textContent = x;
-
             x++;
             puzzlePiece.style.backgroundImage = "url('"+ urlPath +"')";
             gameTable.appendChild(puzzlePiece);
@@ -81,7 +80,6 @@ function endAnimation() {
             ],
         delay: anime.stagger(1500, {grid: [3, 3], from: 'center'}),
     });
-
 }
 
 
