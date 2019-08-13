@@ -19,7 +19,8 @@ h1 {
 }
 
 button, label {
-    color: black;
+    color: white;
+    text-decoration: underline;
     font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
     font-size: 40px;
     line-height: 25px;
